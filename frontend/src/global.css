@@ -1,0 +1,68 @@
+:root {
+    --mainPurple: #6D29D6;
+    --mainOrange: #F78323;
+    --mainGrey: #999999;
+    --secondaryGrey: #6F6F75;
+    --backgroundGrey: #F6F6F6;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+*, input, button {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+/* Button */
+
+.btn-orange {
+    background: var(--mainOrange);
+    color: #fff;
+    font-weight: bold;
+    border-radius: 30px;
+}
+
+.btn-orange:hover {
+    color: #fff;
+    opacity: 0.8;
+}
+
+/* -/-/- */
+
+.policy {
+    font-size: 0.7rem;
+    color: var(--secondaryGrey);
+    font-weight: 600;
+}
+
+.text-purple {
+    color: var(--mainPurple);
+}
+
+.text-orange {
+    color: var(--mainOrange);
+}
+
+.bg-purple {
+    background-color: var(--mainPurple);
+}
+
+.height-100 {
+    height: 75vh;
+}
+
+.img-product {
+    background-color: #f2f2f2;
+    width: 20rem;
+    height: 10rem;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}

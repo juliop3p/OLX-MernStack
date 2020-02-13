@@ -1,0 +1,86 @@
+.categories {
+    list-style: none;
+    color: #666;
+    padding: 0;
+}
+
+.categories > li {
+    cursor: pointer;
+}
+
+.categories > li i {
+    color: var(--mainPurple);
+}
+
+.categories > li:hover {
+    opacity: 0.8;
+}
+
+.categories > li.selected {
+    background-color: var(--mainPurple);
+    color: #fff;
+}
+
+.categories .selected i {
+    color: #fff;
+}
+
+.btn-right {
+    float: right;
+    clear: both;
+}
+
+/* Img Upload */
+
+label#img {
+    margin-bottom: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px dotted var(--mainPurple);
+    width: 180px;
+    height: 150px;
+}
+
+label#img:hover {
+    background-color: rgba(255, 136, 136, 0.096);
+}
+
+label#img input {
+    display: none;
+}
+
+label#img .cam {
+    color: var(--mainPurple);
+    text-align: center;
+    display: block;
+    position: absolute;
+    margin: auto;
+}
+
+label#img.has-img .cam {
+    display: none;
+}
+
+label#img.has-img .preview {
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 180px;
+    height: 150px;
+} 
+
+label#img.has-img {
+    border: 0;
+    margin-bottom: 10px;
+}
+
+label .preview {
+    display: none;
+}
+
+label#img.has-img img {
+    display: none;
+}
