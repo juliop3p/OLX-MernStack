@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import './Dashboard.css'
 import api from '../../services/api'
 
@@ -19,7 +19,7 @@ export default function Dashboard({ history }) {
     const [description, setDescription] = useState('')
     const [category, setCategory] = useState('')
     const [price, setPrice] = useState('')
-    const [img, setImg] = useState(null)
+    const [img, setImg] = useState()
 
     const [userProducts, setUserProducts] = useState([])
     const [quantity, setQuantity] = useState([])
@@ -29,6 +29,7 @@ export default function Dashboard({ history }) {
     const [pagination, setPagination] = useState([])
 
     const [success, setSuccess] = useState(null)
+    const [editing, setEditing] = useState(false);
 
     const _id = localStorage.getItem('_id')
     const authorization = localStorage.getItem('Authorization')
@@ -45,9 +46,9 @@ export default function Dashboard({ history }) {
             !response.data && history.push('/login')
         }
         isAuthenticated()
-    }, [])
+    }, [authorization, history])
 
-    const loadProducts = async () => {
+    const loadProducts = (useCallback(async () => {
         const response = await api.get(`/products/user?_id=${_id}&page=${page}`, {
             headers: { authorization }
         })
@@ -55,11 +56,11 @@ export default function Dashboard({ history }) {
         setUserProducts(response.data.products)
         setQuantity(response.data.total)
         setPagination(response.data.pagination)
-    }
+    }, [_id, authorization, page]))
     
     useEffect(() => {
         loadProducts()
-    }, [page])
+    }, [loadProducts, page])
 
 
     const handleSubmitProduct = async event => {
@@ -84,6 +85,7 @@ export default function Dashboard({ history }) {
 
         loadProducts()
         setForm(false)
+        setEditing(false)
     }
 
     const destroyProduct = async _id => {
@@ -105,6 +107,7 @@ export default function Dashboard({ history }) {
         setCategory(product.category)
         setImg(product.img)
         setPrice(product.price)
+        setEditing(true)
 
         setForm(true)
     }
@@ -133,7 +136,7 @@ export default function Dashboard({ history }) {
                     setForm = value.state.setForm
 
                     return form
-                    ? ( <FormProduct state={state} handleSubmitProduct={handleSubmitProduct} /> )
+                    ? ( <FormProduct state={state} handleSubmitProduct={handleSubmitProduct} editing={editing} /> )
                     : 
                     ( 
                         <>

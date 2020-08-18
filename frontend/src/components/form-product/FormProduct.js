@@ -2,13 +2,17 @@ import React, { useMemo } from 'react'
 import './FormProduct.css'
 import navIcons from '../utils/navIcons'
 
-export default function FormProduct({ state, handleSubmitProduct }) {
-    console.log(typeof state.image !== 'string')
+export default function FormProduct({ state, handleSubmitProduct, editing }) {
     const preview = useMemo(
         () => {
-            return typeof state.image !== 'string' && state.img ? URL.createObjectURL(state.img) : null
+            return typeof state.img === 'object' ? URL.createObjectURL(state.img) : state.img
         }, [state.img]
     )
+
+    console.log(typeof state.img)
+    console.log(state.img)
+    console.log(preview)
+
 
     return (
         <section id="form" className="py-5 px-3">
@@ -65,7 +69,7 @@ export default function FormProduct({ state, handleSubmitProduct }) {
                                     className={state.img ? 'has-img' : ''}
                                 >
                                     <img 
-                                        src={state.img.name ? `${preview}` : `http://localhost:8080/files/${state.img}`} 
+                                        src={typeof state.img === 'object' ? `${preview}` : `http://localhost:8080/files/${state.img}`} 
                                         alt="preview"
                                         className="preview img-product"
                                     />
