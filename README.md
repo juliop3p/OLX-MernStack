@@ -13,22 +13,14 @@
 ### Main Features:
 **SignIn/SignUp, Upload de Fotos, Rotas autenticadas, Paginação, CRUD de produtos, Responsividade.**
 
-#
-
 ## Tela de Login
 ![login](./readmeImages/Login.png)
-
-#
 
 ## Tela Home
 ![login](./readmeImages/Home.png)
 
-#
-
 ## Tela Detalhes Do Produto
 ![login](./readmeImages/Detail.png)
-
-#
 
 ## Tela Dashboard
 ![login](./readmeImages/Dashboard.png)
